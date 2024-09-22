@@ -45,7 +45,7 @@ else()
 	FetchContent_MakeAvailable(Module)
 endif()
 
-find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
 
 list(APPEND NTSHENGN_DEFINES NTSHENGN_CURRENT_MODULE_WINDOW)
 
@@ -63,9 +63,9 @@ target_link_libraries(${PROJECT_NAME}
 	PRIVATE
 		NutshellEngine::Module
 		NutshellEngine::Common
-		Qt5::Core
-		Qt5::Gui
-		Qt5::Widgets)
+		Qt6::Core
+		Qt6::Gui
+		Qt6::Widgets)
 
 target_compile_options(${PROJECT_NAME} PRIVATE
 		$<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
