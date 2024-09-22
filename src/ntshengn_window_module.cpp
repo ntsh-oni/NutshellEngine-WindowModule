@@ -2,7 +2,7 @@
 #if defined(NTSHENGN_OS_WINDOWS)
 #include <windows.h>
 #elif defined(NTSHENGN_OS_LINUX) || defined(NTSHENGN_OS_FREEBSD)
-#include <QX11Info>
+#include <QGuiApplication>
 #endif
 #include "../Module/utils/ntshengn_module_defines.h"
 #include "../Module/utils/ntshengn_dynamic_library.h"
@@ -335,7 +335,7 @@ NtshEngn::NativeWindowAdditionalInformation NtshEngn::WindowModule::getWindowNat
 #if defined(NTSHENGN_OS_WINDOWS)
 	return reinterpret_cast<NativeWindowAdditionalInformation>(GetWindowLongPtr(reinterpret_cast<HWND>(m_windows[windowID]->winId()), GWLP_HINSTANCE));
 #elif defined (NTSHENGN_OS_LINUX) || defined(NTSHENGN_OS_FREEBSD)
-	return reinterpret_cast<NativeWindowAdditionalInformation>(QX11Info::display());
+	return reinterpret_cast<NativeWindowAdditionalInformation>(qGuiApp->nativeInterface<QNativeInterface::QX11Application>()->display());
 #endif
 }
 
